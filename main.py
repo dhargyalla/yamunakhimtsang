@@ -1,5 +1,7 @@
 from sqlite3 import IntegrityError
 
+import os
+from dotenv import load_dotenv
 from flask import Flask, url_for, render_template,redirect,flash,abort
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
@@ -19,12 +21,15 @@ class Base(DeclarativeBase):
     pass
 
 db = SQLAlchemy(model_class = Base)
+# Load environment variables from .env file
+load_dotenv()
 
 # create the app
 app = Flask(__name__)
 # configure the SQLite database, relative to the app instance folder
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI", "sqlite:///posts.db")
 # initialize the app with the extension
 db.init_app(app)
 Bootstrap5(app)
