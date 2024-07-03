@@ -1,0 +1,93 @@
+.section1{
+    background-color:#A2D5F2;
+}
+
+.section2{
+    background-color:#FAFAFA;
+    font-family: var(--bs-body-font-family);
+}
+
+.section3{
+    background-color:#F6F4EB;
+    font-family: var(--bs-body-font-family);
+}
+
+
+.card {
+    height: 100%; /* Ensures the card takes the full height of its container */
+    overflow: hidden;
+    color: #FF7E67; /* Text color for better contrast */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for a slight 3D effect */
+    position: relative; /* Ensures the background image covers the card correctly */
+}
+
+.card-cover {
+    background-size: contain; /* Ensures the background image is fully visible */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+}
+
+/* Optional: Additional styling for text inside the card */
+.card .content {
+    position: absolute;
+    bottom: 0; /* Positions the content at the bottom of the card */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better text readability */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+/* Custom css for comment By Tsering*/
+
+
+/* Commment Styling */
+.commentBox {
+  padding:10px;
+  border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+  width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+  width:18%;
+}
+
+
+.comment {
+  padding-top: 20px;
+}
+.commentList {
+  padding:0;
+  list-style:none;
+  max-height:200px;
+  overflow:auto;
+}
+.commentList li {
+  margin:0;
+  margin-top:10px;
+}
+.commentList li > div {
+  display:table-cell;
+}
+.commenterImage {
+  width:30px;
+  margin-right:5px;
+  height:100%;
+  float:left;
+}
+.commenterImage img {
+  width:100%;
+  border-radius:50%;
+}
+.commentText p {
+  margin:0;
+}
+
+.sub-text {
+  color:#aaa;
+  font-family:verdana;
+  font-size:13px;
+}
