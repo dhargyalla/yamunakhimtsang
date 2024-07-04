@@ -34,6 +34,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI", "sqlite:/
 db.init_app(app)
 Bootstrap5(app)
 ckeditor = CKEditor(app)
+# Initialize the SQLAlchemy database
+
 
 # TODO: Configure Flask-Login
 login_manager = LoginManager()
