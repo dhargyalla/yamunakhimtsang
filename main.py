@@ -22,7 +22,7 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class = Base)
 # Load environment variables from .env file
-load_dotenv()
+#load_dotenv()
 
 # create the app
 app = Flask(__name__)
