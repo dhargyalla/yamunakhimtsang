@@ -1,7 +1,7 @@
 from sqlite3 import IntegrityError
 
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from flask import Flask, url_for, render_template,redirect,flash,abort
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
