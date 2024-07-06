@@ -1,7 +1,7 @@
 from sqlite3 import IntegrityError
 
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from flask import Flask, url_for, render_template,redirect,flash,abort
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
@@ -22,7 +22,7 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class = Base)
 # Load environment variables from .env file
-load_dotenv()
+#load_dotenv()
 
 # create the app
 app = Flask(__name__)
@@ -257,6 +257,6 @@ def delete_post(post_id):
     return redirect(url_for("get_all_posts"))
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5003)
+    app.run(debug=False)
 
 
