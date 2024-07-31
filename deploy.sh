@@ -7,6 +7,18 @@ PROJECT_DIR="/home/u347881787/domains/tenzinquilling.com/public_html/yamunakhimt
 echo "Deployment start"
 echo "Repository URL: $REPO_URL"
 
+# Check if project directory exists and create it if it doesn't
+if [ ! -d "$PROJECT_DIR" ]; then
+    echo "Project directory does not exist, creating it"
+    mkdir -p $PROJECT_DIR
+    if [ $? -eq 0 ]; then
+        echo "Project directory created"
+    else
+        echo "Failed to create project directory"
+        exit 1
+    fi
+fi
+
 # Navigate to project directory
 cd $PROJECT_DIR || { echo "Failed to enter project directory"; exit 1; }
 
@@ -23,12 +35,21 @@ if [ -z "$(ls -A $PROJECT_DIR)" ]; then
     fi
 else
     echo "Project directory is not empty"
-    echo "Stashing local changes"
-    git stash || { echo "Failed to stash local changes"; exit 1; }
+
+    # Remove any existing tarball to avoid conflicts
+    if [ -f "yamunakhimtsang_with_venv.tar.gz" ]; then
+        echo "Removing existing yamunakhimtsang_with_venv.tar.gz"
+        rm yamunakhimtsang_with_venv.tar.gz
+    fi
+
     echo "Pulling latest changes from repository"
     git pull || { echo "Failed to update repository"; exit 1; }
-    echo "Applying stashed changes"
-    git stash pop || { echo "Failed to apply stashed changes"; exit 1; }
+fi
+
+# Check if the virtual environment exists and create it if it doesn't
+if [ ! -d "venv" ]; then
+    echo "Virtual environment not found. Creating it."
+    python3 -m venv venv || { echo "Failed to create virtual environment"; exit 1; }
 fi
 
 # Activate the virtual environment
