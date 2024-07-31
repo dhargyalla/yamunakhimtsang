@@ -2,7 +2,6 @@
 
 # Set the repository URL and project directory
 REPO_URL="git@github.com:dhargyalla/yamunakhimtsang.git"
-REPO_URL="git@github.com:dhargyalla/yamunakhimtsang.git"
 PROJECT_DIR="/home/u347881787/domains/tenzinquilling.com/public_html"
 
 echo "Deployment start"
