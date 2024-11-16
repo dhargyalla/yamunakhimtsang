@@ -24,8 +24,7 @@ db = SQLAlchemy(model_class = Base)
 # Load environment variables from .env file
 #load_dotenv()
 
-# create the app
-app = Flask(__name__)
+
 # configure the SQLite database, relative to the app instance folder
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
@@ -145,7 +144,7 @@ def login():
             flash('The user does not exit, try again','danger')
             return redirect(url_for('login'))
         elif not check_password_hash(user.password,password):
-            flash('Incorrect password, try again','danger')
+            flash('Incorrect password, try again', 'danger')
             return redirect(url_for('login'))
         else:
             login_user(user)
@@ -255,6 +254,7 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for("get_all_posts"))
+
 
 if __name__ == "__main__":
     app.run(debug=False)
