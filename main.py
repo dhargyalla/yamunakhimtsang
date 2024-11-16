@@ -24,11 +24,11 @@ db = SQLAlchemy(model_class = Base)
 # Load environment variables from .env file
 #load_dotenv()
 
-
+app = Flask(__name__)
 # configure the SQLite database, relative to the app instance folder
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI", "sqlite:///posts.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI") # os.environ.get("DATABASE_URI", "sqlite:///posts.db")
 # initialize the app with the extension
 db.init_app(app)
 Bootstrap5(app)
@@ -115,7 +115,7 @@ def register():
         user = result.scalar()
         hash_and_salted = generate_password_hash(form.password.data,method='pbkdf2:sha256',salt_length=8)
         newUser = User(
-            email = form.email.data,
+            email= form.email.data,
             name = form.name.data,
             password = hash_and_salted
         )
